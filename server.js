@@ -62,10 +62,10 @@ app.get('/tweetpic', function(req, res) {
 app.get('/upload', function (req, res) {
 	console.log('REQUEST KEYS: =====');
 	console.log(req);
-	for (var key in req) {
+	for (var key in req.session) {
 		console.log(key);
 	}
-  if (req.session.oauth !== undefined && req.session.oauth.screen_name !== undefined) {
+  // if (req.session.oauth !== undefined && req.session.oauth.screen_name !== undefined) {
 	
   /**
    * Below is code to illustrate how to send a status update to Twitter
@@ -111,10 +111,10 @@ app.get('/upload', function (req, res) {
 
 
 
-	} else {
-		console.log("Could not authenticate user. Redirecting to /");
-		res.redirect('/');
-	}
+	// } else {
+	// 	console.log("Could not authenticate user. Redirecting to /");
+	// 	res.redirect('/');
+	// }
 });
 
 app.get('/login', oauth.login);
