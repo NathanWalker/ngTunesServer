@@ -78,12 +78,12 @@ app.post('/upload', function (req, res) {
 		// 		consumer_secret: consumer_secret,
     //     token: req.session.oauth.access_token,
 		// 		token_secret: req.session.oauth.access_token_secret
-		// 	};
-	for (let key in req) {
+		// 	};dd
+	for (var key in req) {
 		console.log(key);
 		}
 	console.log('REQ.BODY =====');
-		for (let key in req.body) {
+		for (var key in req.body) {
 			console.log('req.body ----');
 		console.log(key);
 	}
