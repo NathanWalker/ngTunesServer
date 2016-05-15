@@ -112,7 +112,7 @@ app.get('/upload', function(req, res) {
 
 app.get('/request_token', function(req, res) {
 
-  if (req.session.oauth !== undefined && req.session.oauth.screen_name !== undefined) {
+  // if (req.session.oauth !== undefined && req.session.oauth.screen_name !== undefined) {
 	
   /**
    * Below is code to illustrate how to send a status update to Twitter
@@ -144,10 +144,10 @@ app.get('/request_token', function(req, res) {
     });		
 
 
-	} else {
-		console.log("Could not request token for user. Redirecting to /");
-		res.redirect('/');
-	}
+	// } else {
+	// 	console.log("Could not request token for user. Redirecting to /");
+	// 	res.redirect('/');
+	// }
 });
 
 app.get('/login', oauth.login);
