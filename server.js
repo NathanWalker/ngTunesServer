@@ -82,9 +82,9 @@ app.post('/upload', function (req, res) {
 	for (var key in req) {
 		console.log(key);
 		}
-	console.log('REQ.BODY =====');
-		for (var key in req.body) {
-			console.log('req.body ----');
+	console.log('REQ.session =====');
+		for (var key in req.session) {
+			console.log('req.session ----');
 		console.log(key);
 	}
 
