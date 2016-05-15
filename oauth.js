@@ -4,7 +4,7 @@ var callbackURL = "https://vast-hollows-93220.herokuapp.com/callback"
   , CONSUMER_KEY = "Uh9zeGyTlzRZQmuw1OVlFjYfv"
   , CONSUMER_SECRET = "7afZJTYaN3LanUeCshd8COdm7fYXFicZATrQw7OhBeF2dauo81";
 
-var clientApp = 'http://10.0.0.1:4200/login';
+var clientApp = 'http://127.0.0.1:4200/login';
   
 var oa = new oauth(
   "https://api.twitter.com/oauth/request_token",
