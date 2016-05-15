@@ -5,6 +5,9 @@ var express = require('express') //web dev framework
 
 app.set('port', (process.env.PORT || 5000));
 
+var consumer_key = 'Uh9zeGyTlzRZQmuw1OVlFjYfv';
+var consumer_secret = '7afZJTYaN3LanUeCshd8COdm7fYXFicZATrQw7OhBeF2dauo81';
+var callBackUrl = 'http://10.0.0.1:4200/callback';
 var cookieParser = require('cookie-parser')
 var session = require('express-session');
 // Setup middleware
@@ -24,8 +27,8 @@ app.get('/tweetpic', function(req, res) {
     var url = 'https://api.twitter.com/1.1/statuses/update.json';
     
     var oauth_params = {
-				consumer_key: '	Uh9zeGyTlzRZQmuw1OVlFjYfv',
-				consumer_secret: '7afZJTYaN3LanUeCshd8COdm7fYXFicZATrQw7OhBeF2dauo81',
+				consumer_key: consumer_key,
+				consumer_secret: consumer_secret,
         token: req.session.oauth.access_token,
 				token_secret: req.session.oauth.access_token_secret
 			};
@@ -67,8 +70,8 @@ app.get('/upload', function(req, res) {
     var url = 'https://upload.twitter.com/1.1/media/upload.json';
     
     var oauth_params = {
-				consumer_key: '	Uh9zeGyTlzRZQmuw1OVlFjYfv',
-				consumer_secret: '7afZJTYaN3LanUeCshd8COdm7fYXFicZATrQw7OhBeF2dauo81',
+				consumer_key: consumer_key,
+				consumer_secret: consumer_secret,
         token: req.session.oauth.access_token,
 				token_secret: req.session.oauth.access_token_secret
 			};
@@ -108,46 +111,6 @@ app.get('/upload', function(req, res) {
 		console.log("Could not authenticate user. Redirecting to /");
 		res.redirect('/');
 	}
-});
-
-app.get('/request_token', function(req, res) {
-
-  // if (req.session.oauth !== undefined && req.session.oauth.screen_name !== undefined) {
-	
-  /**
-   * Below is code to illustrate how to send a status update to Twitter
-   **/
-
-    // var url = 'https://upload.twitter.com/1.1/media/upload.json';
-    
-    // var oauth_params = {
-		// 		consumer_key: '	Uh9zeGyTlzRZQmuw1OVlFjYfv',
-		// 		consumer_secret: '7afZJTYaN3LanUeCshd8COdm7fYXFicZATrQw7OhBeF2dauo81',
-    //     token: req.session.oauth.access_token,
-		// 		token_secret: req.session.oauth.access_token_secret
-		// 	};
-
-		oauth.getOAuthRequestToken(function (error, oauth_token, oauth_token_secret, results) {
-        console.log('URL [%s]', url);
-        if (!err && response.statusCode == 200) {
-					// success(body);
-					var oauth = {};
-					oauth.token = oauth_token;
-					oauth.token_secret = oauth_token_secret;
-					console.log('oauth.token: ' + oauth.token);
-					console.log('oauth.token_secret: ' + oauth.token_secret);
-					res.end(oauth);
-        } else {
-					res.end();
-            // error(err, response, body);
-        }
-    });		
-
-
-	// } else {
-	// 	console.log("Could not request token for user. Redirecting to /");
-	// 	res.redirect('/');
-	// }
 });
 
 app.get('/login', oauth.login);
