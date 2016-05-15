@@ -79,6 +79,14 @@ app.post('/upload', function (req, res) {
     //     token: req.session.oauth.access_token,
 		// 		token_secret: req.session.oauth.access_token_secret
 		// 	};
+	for (let key in req) {
+		console.log(key);
+		}
+	console.log('REQ.BODY =====');
+		for (let key in req.body) {
+			console.log('req.body ----');
+		console.log(key);
+	}
 
 		oauth.upload(url, req.body.access_token, req.body.access_token_secret, { media_data: req.body.media_data}, function (err, body, response) {
         console.log('URL [%s]', url);
