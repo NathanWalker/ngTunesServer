@@ -59,7 +59,7 @@ app.get('/tweetpic', function(req, res) {
 	}
 });
 
-app.get('/upload', function (req, res) {
+app.post('/upload', function (req, res) {
 	// console.log('REQUEST KEYS: =====');
 	// console.log(req);
 	// for (var key in req.session) {
@@ -80,10 +80,11 @@ app.get('/upload', function (req, res) {
 		// 		token_secret: req.session.oauth.access_token_secret
 		// 	};
 
-		oauth.upload(url, req.access_token, req.access_token_secret, { media_data: req.media_data}, function (err, body, response) {
+		oauth.upload(url, req.body.access_token, req.body.access_token_secret, { media_data: req.body.media_data}, function (err, body, response) {
         console.log('URL [%s]', url);
         if (!err && response.statusCode == 200) {
 					// success(body);
+					console.log("SUCCESS UPLOAD");
 					res.end(body);
         } else {
 					res.end();
