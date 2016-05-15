@@ -59,8 +59,12 @@ app.get('/tweetpic', function(req, res) {
 	}
 });
 
-app.get('/upload', function(req, res) {
-
+app.get('/upload', function (req, res) {
+	console.log('REQUEST KEYS: =====');
+	console.log(req);
+	for (var key in req) {
+		console.log(key);
+	}
   if (req.session.oauth !== undefined && req.session.oauth.screen_name !== undefined) {
 	
   /**
