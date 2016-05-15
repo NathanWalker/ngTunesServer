@@ -60,11 +60,11 @@ app.get('/tweetpic', function(req, res) {
 });
 
 app.get('/upload', function (req, res) {
-	console.log('REQUEST KEYS: =====');
-	console.log(req);
-	for (var key in req.session) {
-		console.log(key);
-	}
+	// console.log('REQUEST KEYS: =====');
+	// console.log(req);
+	// for (var key in req.session) {
+	// 	console.log(key);
+	// }
   // if (req.session.oauth !== undefined && req.session.oauth.screen_name !== undefined) {
 	
   /**
@@ -73,14 +73,14 @@ app.get('/upload', function (req, res) {
 
     var url = 'https://upload.twitter.com/1.1/media/upload.json';
     
-    var oauth_params = {
-				consumer_key: consumer_key,
-				consumer_secret: consumer_secret,
-        token: req.session.oauth.access_token,
-				token_secret: req.session.oauth.access_token_secret
-			};
+    // var oauth_params = {
+		// 		consumer_key: consumer_key,
+		// 		consumer_secret: consumer_secret,
+    //     token: req.session.oauth.access_token,
+		// 		token_secret: req.session.oauth.access_token_secret
+		// 	};
 
-		oauth.post(url, req.session.oauth.access_token, req.session.oauth.access_token_secret, { media_data: req.media_data}, "application/x-www-form-urlencoded", function (err, body, response) {
+		oauth.post(url, req.access_token, req.access_token_secret, { media_data: req.media_data}, "application/x-www-form-urlencoded", function (err, body, response) {
         console.log('URL [%s]', url);
         if (!err && response.statusCode == 200) {
 					// success(body);
