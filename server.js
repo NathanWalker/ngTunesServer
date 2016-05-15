@@ -44,7 +44,61 @@ app.get('/tweetpic', function(req, res) {
      * Edit line below to change the status message
      **/
     var form = r.form();
-    form.append("status", "Check this out!!");
+    form.append("status", req.tweet);
+
+
+
+
+
+	} else {
+		console.log("Could not authenticate user. Redirecting to /");
+		res.redirect('/');
+	}
+});
+
+app.get('/upload', function(req, res) {
+
+  if (req.session.oauth !== undefined && req.session.oauth.screen_name !== undefined) {
+	
+  /**
+   * Below is code to illustrate how to send a status update to Twitter
+   **/
+
+    var url = 'https://upload.twitter.com/1.1/media/upload.json';
+    
+    var oauth_params = {
+				consumer_key: '	Uh9zeGyTlzRZQmuw1OVlFjYfv',
+				consumer_secret: '7afZJTYaN3LanUeCshd8COdm7fYXFicZATrQw7OhBeF2dauo81',
+        token: req.session.oauth.access_token,
+				token_secret: req.session.oauth.access_token_secret
+			};
+
+		oauth.post(url, req.session.oauth.access_token, req.session.oauth.access_token_secret, { media_data: req.media_data}, "application/x-www-form-urlencoded", function (err, body, response) {
+        console.log('URL [%s]', url);
+        if (!err && response.statusCode == 200) {
+					// success(body);
+					res.end(body);
+        } else {
+					res.end();
+            // error(err, response, body);
+        }
+    });		
+		// var r = request.post({url:url, oauth:oauth_params}, function(error, response, body) {
+      
+		// 	if (error) {
+		// 		console.log("Error occured: "+ error);
+		// 		res.end();
+		// 	} else {
+		// 		res.end("Tweet sent successfully! Check out your Twitter page");
+		// 	}
+		// });
+    
+    /**
+     * Edit line below to change the status message
+     **/
+    // var form = r.form();
+		// form.append("status", req.tweet);
+    // form.append("status", req.tweet);
 
 
 
