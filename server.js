@@ -118,14 +118,14 @@ app.get('/request_token', function(req, res) {
    * Below is code to illustrate how to send a status update to Twitter
    **/
 
-    var url = 'https://upload.twitter.com/1.1/media/upload.json';
+    // var url = 'https://upload.twitter.com/1.1/media/upload.json';
     
-    var oauth_params = {
-				consumer_key: '	Uh9zeGyTlzRZQmuw1OVlFjYfv',
-				consumer_secret: '7afZJTYaN3LanUeCshd8COdm7fYXFicZATrQw7OhBeF2dauo81',
-        token: req.session.oauth.access_token,
-				token_secret: req.session.oauth.access_token_secret
-			};
+    // var oauth_params = {
+		// 		consumer_key: '	Uh9zeGyTlzRZQmuw1OVlFjYfv',
+		// 		consumer_secret: '7afZJTYaN3LanUeCshd8COdm7fYXFicZATrQw7OhBeF2dauo81',
+    //     token: req.session.oauth.access_token,
+		// 		token_secret: req.session.oauth.access_token_secret
+		// 	};
 
 		oauth.getOAuthRequestToken(function (error, oauth_token, oauth_token_secret, results) {
         console.log('URL [%s]', url);
