@@ -1,0 +1,10 @@
+{
+  "name": "ngTunesServer",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "cookie-parser": "^1.4.1",
+    "express-session": "^1.13.0",
+  }
+}
