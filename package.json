@@ -1,10 +1,22 @@
 {
-  "name": "ngTunesServer",
+  "name": "ng-tunes-server",
   "version": "1.0.0",
   "license": "MIT",
-  "private": true,
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
+    "ejs": "2.4.1",
+    "express": "4.13.3",
     "cookie-parser": "^1.4.1",
-    "express-session": "^1.13.0",
-  }
+    "express-session": "^1.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NathanWalker/ngTunesServer"
+  },
 }
