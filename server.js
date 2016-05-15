@@ -57,4 +57,4 @@ app.get('/tweetpic', function(req, res) {
 app.get('/login', oauth.login);
 app.get('/callback', oauth.callback);
 
-app.listen(8080);
+app.listen(80);
