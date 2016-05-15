@@ -10,10 +10,11 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.1",
     "ejs": "2.4.1",
     "express": "4.13.3",
-    "cookie-parser": "^1.4.1",
-    "express-session": "^1.13.0"
+    "express-session": "^1.13.0",
+    "oauth": "^0.9.14"
   },
   "repository": {
     "type": "git",
