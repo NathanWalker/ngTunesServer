@@ -3,6 +3,8 @@ var oauth = require('oauth').OAuth;
 var callbackURL = "https://vast-hollows-93220.herokuapp.com/callback"
   , CONSUMER_KEY = "Uh9zeGyTlzRZQmuw1OVlFjYfv"
   , CONSUMER_SECRET = "7afZJTYaN3LanUeCshd8COdm7fYXFicZATrQw7OhBeF2dauo81";
+
+var clientApp = 'http://10.0.0.1:4200/login';
   
 var oa = new oauth(
   "https://api.twitter.com/oauth/request_token",
@@ -43,13 +45,14 @@ function callback(req, res) {
 				req.session.oauth.access_token = oauth_access_token;
 				req.session.oauth.access_token_secret = oauth_access_token_secret;
 				req.session.oauth.screen_name = results.screen_name;
+
+				res.redirect(clientApp + '?access_token=' + oauth_access_token + '&access_token_secret=' + oauth_access_token_secret + '&screen_name=' + results.screen_name);
+				// console.log("Logged in to Twitter");
+				// console.log(results);
         
-				console.log("Logged in to Twitter");
-				console.log(results);
-        
-				var output = '<html><head></head><body onload="window.close();">Close this window</body></html>';
-				res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end(output);
+				// var output = '<html><head></head><body onload="window.close();">Close this window</body></html>';
+				// res.writeHead(200, {'Content-Type': 'text/html'});
+        // res.end(output);
 			}
 		});
 	} else {
