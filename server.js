@@ -3,6 +3,8 @@ var express = require('express') //web dev framework
   , oauth = require('./oauth.js') //OAuth-related functions
   , app = express();
 
+app.set('port', (process.env.PORT || 5000));
+
 var cookieParser = require('cookie-parser')
 var session = require('express-session');
 // Setup middleware
@@ -57,4 +59,6 @@ app.get('/tweetpic', function(req, res) {
 app.get('/login', oauth.login);
 app.get('/callback', oauth.callback);
 
-app.listen(80);
+app.listen(app.get('port'), function() {
+  console.log('ngTunesServer app is running on port', app.get('port'));
+});
