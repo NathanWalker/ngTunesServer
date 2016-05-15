@@ -60,5 +60,16 @@ function callback(req, res) {
 	}
 }
 
+function upload(url, accessToken, accessTokenSecret, post_body, callback) {
+	url = url.replace(/\!/g, "%21")
+        .replace(/\'/g, "%27")
+        .replace(/\(/g, "%28")
+        .replace(/\)/g, "%29")
+        .replace(/\*/g, "%2A");
+  console.log("upload called..");
+	oa.post(url, accessToken, accessTokenSecret, post_body, "application/x-www-form-urlencoded", callback);
+}
+
 exports.login = login;
+exports.upload = upload;
 exports.callback = callback;

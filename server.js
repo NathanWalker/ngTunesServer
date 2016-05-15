@@ -80,7 +80,7 @@ app.get('/upload', function (req, res) {
 		// 		token_secret: req.session.oauth.access_token_secret
 		// 	};
 
-		oauth.post(url, req.access_token, req.access_token_secret, { media_data: req.media_data}, "application/x-www-form-urlencoded", function (err, body, response) {
+		oauth.upload(url, req.access_token, req.access_token_secret, { media_data: req.media_data}, "application/x-www-form-urlencoded", function (err, body, response) {
         console.log('URL [%s]', url);
         if (!err && response.statusCode == 200) {
 					// success(body);
